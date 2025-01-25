@@ -4,12 +4,10 @@ import com.xtramile.studentcrud.entity.student.exception.StudentNotFoundExceptio
 import com.xtramile.studentcrud.infrastructure.common.ApiResponse;
 import com.xtramile.studentcrud.usecase.student.DeleteStudentUseCase;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class DeleteStudentController {
 
     private final DeleteStudentUseCase deleteStudentUseCase;
