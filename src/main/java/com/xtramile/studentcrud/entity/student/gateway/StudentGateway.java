@@ -1,6 +1,7 @@
 package com.xtramile.studentcrud.entity.student.gateway;
 
 import com.xtramile.studentcrud.entity.student.model.Student;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;

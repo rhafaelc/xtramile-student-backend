@@ -13,7 +13,7 @@ public class CreateStudentUseCase {
     }
 
     public Student execute(CreateStudentDTO input) {
-        Student student = new Student(null, input.getFirstName(), input.getLastName(), input.getDob());
+        Student student = new Student(null, input.firstName(), input.lastName(), input.dob());
         return studentGateway.create(student);
     }
 }
