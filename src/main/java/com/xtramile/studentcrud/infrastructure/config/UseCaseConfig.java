@@ -7,6 +7,7 @@ import com.xtramile.studentcrud.usecase.student.CreateStudentUseCase;
 import com.xtramile.studentcrud.usecase.student.DeleteStudentUseCase;
 import com.xtramile.studentcrud.usecase.student.FindAllStudentUseCase;
 import com.xtramile.studentcrud.usecase.student.UpdateStudentUseCase;
+import com.xtramile.studentcrud.usecase.student.FindStudentByIdUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -34,5 +35,11 @@ public class UseCaseConfig {
     public FindAllStudentUseCase findAllStudentUseCase(StudentRepository studentRepository) {
         StudentGateway studentGateway = new StudentGatewayImpl(studentRepository);
         return new FindAllStudentUseCase(studentGateway);
+    }
+
+    @Bean
+    public FindStudentByIdUseCase findStudentByIdUseCase(StudentRepository studentRepository) {
+        StudentGateway studentGateway = new StudentGatewayImpl(studentRepository);
+        return new FindStudentByIdUseCase(studentGateway);
     }
 }

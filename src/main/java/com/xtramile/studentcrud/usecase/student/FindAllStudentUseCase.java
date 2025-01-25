@@ -2,6 +2,7 @@ package com.xtramile.studentcrud.usecase.student;
 
 import com.xtramile.studentcrud.entity.student.gateway.StudentGateway;
 import com.xtramile.studentcrud.entity.student.model.Student;
+import com.xtramile.studentcrud.usecase.student.result.FindAllStudentResult;
 
 import java.util.List;
 
@@ -12,7 +13,18 @@ public class FindAllStudentUseCase {
         this.studentGateway = studentGateway;
     }
 
-    public List<Student> execute(int page, int size) {
-        return studentGateway.find(page, size);
+    public FindAllStudentResult execute(int page, int size) {
+        List<Student> students = studentGateway.find(page, size);
+        long totalElements = studentGateway.count();
+        int totalPages = (int) Math.ceil((double) totalElements / size);
+
+        return new FindAllStudentResult(
+            students,
+            totalElements,
+            page,
+            totalPages,
+            size,
+            students.isEmpty()
+        );
     }
 }

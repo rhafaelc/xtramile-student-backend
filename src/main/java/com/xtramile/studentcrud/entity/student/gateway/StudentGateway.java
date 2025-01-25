@@ -12,4 +12,5 @@ public interface StudentGateway {
     void delete(Long id);
     Optional<Student> findById(Long id);
     List<Student> find(int page, int size);
+    long count();
 }

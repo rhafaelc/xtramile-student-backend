@@ -3,8 +3,14 @@ package com.xtramile.studentcrud.usecase.student.dto;
 import java.util.List;
 
 public interface PaginatedStudentResponseDTO {
-    int getCount();
-    String getPrev();
-    String getNext();
-    List<StudentResponseDTO> getResults();
+    List<StudentResponseDTO> getContent();
+    Metadata getMetadata();
+    
+    interface Metadata {
+        long getTotalElements();
+        int getPage();
+        int getTotalPages();
+        int getSize();
+        boolean isEmpty();
+    }
 }

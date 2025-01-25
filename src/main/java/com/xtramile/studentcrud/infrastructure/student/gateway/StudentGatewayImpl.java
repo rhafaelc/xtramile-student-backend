@@ -5,8 +5,8 @@ import com.xtramile.studentcrud.entity.student.model.Student;
 import com.xtramile.studentcrud.infrastructure.db.repository.StudentRepository;
 import com.xtramile.studentcrud.infrastructure.db.schema.StudentSchema;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +39,16 @@ public class StudentGatewayImpl implements StudentGateway {
 
     @Override
     public List<Student> find(int page, int size) {
-        return List.of();
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.by("id").ascending());
+        return studentRepository.findAll(pageRequest)
+                .getContent()
+                .stream()
+                .map(StudentSchema::toStudent)
+                .toList();
+    }
+
+    @Override
+    public long count() {
+        return studentRepository.count();
     }
 }
