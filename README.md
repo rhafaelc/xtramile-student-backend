@@ -88,11 +88,12 @@ The application will be available at `http://localhost:8080`
 
 ## API Documentation
 
-WIP 
+[Postman API Documentation](https://documenter.getpostman.com/view/39388595/2sAYQfEVUX)
+
 
 ## Deployment
 Was deployed on Digital Ocean.
 
-Link: [https://oyster-app-fedek.ondigitalocean.app/](https://oyster-app-fedek.ondigitalocean.app/)
+Link: [https://oyster-app-fedek.ondigitalocean.app](https://oyster-app-fedek.ondigitalocean.app)
 
 Database: Supabase
