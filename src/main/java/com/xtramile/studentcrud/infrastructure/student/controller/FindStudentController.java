@@ -1,5 +1,6 @@
 package com.xtramile.studentcrud.infrastructure.student.controller;
 
+import com.xtramile.studentcrud.infrastructure.common.ApiResponse;
 import com.xtramile.studentcrud.infrastructure.student.dto.PaginatedStudentResponseDTOImpl;
 import com.xtramile.studentcrud.infrastructure.student.dto.StudentResponseDTOImpl;
 import com.xtramile.studentcrud.usecase.student.FindAllStudentUseCase;
@@ -22,7 +23,7 @@ public class FindStudentController {
     }
 
     @GetMapping("/students")
-    public PaginatedStudentResponseDTOImpl findStudent(
+    public ApiResponse<PaginatedStudentResponseDTOImpl> findStudent(
             @RequestParam(defaultValue = "1") @Min(value = 1, message = "Page must be greater than 1") int page,
             @RequestParam(defaultValue = "10") @Min(value = 1, message = "Size must be greater than 1") int size
     ) {
@@ -32,7 +33,7 @@ public class FindStudentController {
                 .map(StudentResponseDTOImpl::new)
                 .collect(Collectors.toList());
                 
-        return new PaginatedStudentResponseDTOImpl(
+        PaginatedStudentResponseDTOImpl response = new PaginatedStudentResponseDTOImpl(
             formattedResults,
             result.totalElements(),
             result.number() + 1,
@@ -40,5 +41,7 @@ public class FindStudentController {
             result.size(),
             result.empty()
         );
+
+        return ApiResponse.success("Students retrieved successfully", response);
     }
 }

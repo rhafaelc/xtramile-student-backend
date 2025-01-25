@@ -1,5 +1,6 @@
 package com.xtramile.studentcrud.infrastructure.student.controller;
 
+import com.xtramile.studentcrud.infrastructure.common.ApiResponse;
 import com.xtramile.studentcrud.infrastructure.student.dto.StudentResponseDTOImpl;
 import com.xtramile.studentcrud.usecase.student.FindStudentByIdUseCase;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,8 @@ public class FindStudentByIdController {
     }
 
     @GetMapping("/students/{id}")
-    public StudentResponseDTOImpl findStudentById(@PathVariable Long id) {
-        return new StudentResponseDTOImpl(findStudentByIdUseCase.execute(id));
+    public ApiResponse<StudentResponseDTOImpl> findStudentById(@PathVariable Long id) {
+        StudentResponseDTOImpl response = new StudentResponseDTOImpl(findStudentByIdUseCase.execute(id));
+        return ApiResponse.success("Student retrieved successfully", response);
     }
 } 

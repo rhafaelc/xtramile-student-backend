@@ -1,5 +1,6 @@
 package com.xtramile.studentcrud.infrastructure.student.controller;
 
+import com.xtramile.studentcrud.infrastructure.common.ApiResponse;
 import com.xtramile.studentcrud.infrastructure.student.dto.CreateStudentDTOImpl;
 import com.xtramile.studentcrud.infrastructure.student.dto.StudentResponseDTOImpl;
 import com.xtramile.studentcrud.usecase.student.CreateStudentUseCase;
@@ -20,7 +21,8 @@ public class CreateStudentController {
 
     @PostMapping("/students")
     @ResponseStatus(HttpStatus.CREATED)
-    public StudentResponseDTOImpl createStudent(@Valid @RequestBody CreateStudentDTOImpl dto) {
-        return new StudentResponseDTOImpl(createStudentUseCase.execute(dto));
+    public ApiResponse<StudentResponseDTOImpl> createStudent(@Valid @RequestBody CreateStudentDTOImpl dto) {
+        StudentResponseDTOImpl response = new StudentResponseDTOImpl(createStudentUseCase.execute(dto));
+        return ApiResponse.created("Student successfully created", response);
     }
 }

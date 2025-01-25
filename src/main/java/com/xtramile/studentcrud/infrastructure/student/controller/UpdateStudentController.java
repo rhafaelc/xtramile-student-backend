@@ -1,6 +1,7 @@
 package com.xtramile.studentcrud.infrastructure.student.controller;
 
 import com.xtramile.studentcrud.entity.student.exception.StudentNotFoundException;
+import com.xtramile.studentcrud.infrastructure.common.ApiResponse;
 import com.xtramile.studentcrud.infrastructure.student.dto.StudentResponseDTOImpl;
 import com.xtramile.studentcrud.infrastructure.student.dto.UpdateStudentDTOImpl;
 import com.xtramile.studentcrud.usecase.student.UpdateStudentUseCase;
@@ -18,7 +19,8 @@ public class UpdateStudentController {
 
     @PutMapping("/students/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public StudentResponseDTOImpl updateStudent(@PathVariable Long id, @Valid @RequestBody UpdateStudentDTOImpl dto) throws StudentNotFoundException {
-        return new StudentResponseDTOImpl(updateStudentUseCase.execute(id, dto));
+    public ApiResponse<StudentResponseDTOImpl> updateStudent(@PathVariable Long id, @Valid @RequestBody UpdateStudentDTOImpl dto) throws StudentNotFoundException {
+        StudentResponseDTOImpl response = new StudentResponseDTOImpl(updateStudentUseCase.execute(id, dto));
+        return ApiResponse.success("Student successfully updated", response);
     }
 }
