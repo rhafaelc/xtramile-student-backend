@@ -9,6 +9,7 @@ A RESTful API for managing student records, built with Spring Boot and Clean Arc
 - [Getting Started](#getting-started)
 - [API Documentation](#api-documentation)
 - [Deployment](#deployment)
+- [References](#references)
 
 ## Technology Stack
 - Java 21
@@ -19,6 +20,8 @@ A RESTful API for managing student records, built with Spring Boot and Clean Arc
 
 ## Architecture
 This project implements Clean Architecture with three main layers:
+![image](./image.png)
+
 
 ### 1. Entity Layer (Core)
 Contains business logic and domain models:
@@ -97,3 +100,14 @@ Was deployed on Digital Ocean.
 Link: [https://oyster-app-fedek.ondigitalocean.app](https://oyster-app-fedek.ondigitalocean.app)
 
 Database: Supabase
+
+
+## References
+- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+- [Spring Boot](https://spring.io/projects/spring-boot)
+- [Spring Boot Clean Architecture](https://github.com/vinimrs/spring-boot-clean-architecture/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Supabase](https://supabase.com/)
+- [Docker](https://www.docker.com/)
+- [Postman](https://www.postman.com/)
+- [Digital Ocean](https://www.digitalocean.com/)
