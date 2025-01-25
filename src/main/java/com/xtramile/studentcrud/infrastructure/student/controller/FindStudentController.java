@@ -7,6 +7,7 @@ import com.xtramile.studentcrud.usecase.student.FindAllStudentUseCase;
 import com.xtramile.studentcrud.usecase.student.dto.StudentResponseDTO;
 import com.xtramile.studentcrud.usecase.student.result.FindAllStudentResult;
 import jakarta.validation.constraints.Min;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class FindStudentController {
     private final FindAllStudentUseCase findAllStudentUseCase;
 
